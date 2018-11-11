@@ -38,3 +38,24 @@ func TestDepthFirstSearch(t *testing.T) {
 
 }
 
+func BenchmarkDFS(b *testing.B) {
+
+	nodes := make(map[string]root.NodeList)
+	nodes["a"] = root.NodeList{"b", "c", "d"}
+	nodes["b"] = root.NodeList{"e", "f"}
+	nodes["c"] = root.NodeList{"g"}
+	nodes["e"] = root.NodeList{"h", "i"}
+
+	b.Run("Recursion", func(b *testing.B) {
+		for n := 0; n < b.N; n++ {
+			recursion.Dfs("a", nodes)
+		}
+	})
+
+	b.Run("Iteration", func(b *testing.B) {
+		for n := 0; n < b.N; n++ {
+			iteration.Dfs("a", nodes)
+		}
+	})
+}
+
