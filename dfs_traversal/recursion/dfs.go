@@ -1,6 +1,6 @@
 package recursion
 
-import commons "github.com/abdulrahmank/graph/root"
+import commons "github.com/abdulrahmank/graph/dfs_traversal"
 
 func Dfs(root string, adjacencyList map[string]commons.NodeList) commons.NodeList {
 	Graph := commons.CreateGraph(adjacencyList)

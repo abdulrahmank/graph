@@ -1,20 +1,20 @@
-package root_test
+package dfs_traversal_test
 
 import (
-	"github.com/abdulrahmank/graph/root"
-	"github.com/abdulrahmank/graph/root/dynamic_programming"
-	"github.com/abdulrahmank/graph/root/iteration"
-	"github.com/abdulrahmank/graph/root/recursion"
+	"github.com/abdulrahmank/graph/dfs_traversal"
+	"github.com/abdulrahmank/graph/dfs_traversal/dynamic_programming"
+	"github.com/abdulrahmank/graph/dfs_traversal/iteration"
+	"github.com/abdulrahmank/graph/dfs_traversal/recursion"
 	"testing"
 )
 
 func TestDepthFirstSearch(t *testing.T) {
 
-	nodes := make(map[string]root.NodeList)
-	nodes["a"] = root.NodeList{"b", "c", "d"}
-	nodes["b"] = root.NodeList{"e", "f"}
-	nodes["c"] = root.NodeList{"g"}
-	nodes["e"] = root.NodeList{"h", "i"}
+	nodes := make(map[string]dfs_traversal.NodeList)
+	nodes["a"] = dfs_traversal.NodeList{"b", "c", "d"}
+	nodes["b"] = dfs_traversal.NodeList{"e", "f"}
+	nodes["c"] = dfs_traversal.NodeList{"g"}
+	nodes["e"] = dfs_traversal.NodeList{"h", "i"}
 	expectedResult := []string{"a","b","e", "h", "i", "f", "c", "g", "d"}
 
 	t.Run("Should traverse given tree in depth first search using recursion", func(t *testing.T) {
@@ -50,11 +50,11 @@ func TestDepthFirstSearch(t *testing.T) {
 
 func BenchmarkDFS(b *testing.B) {
 
-	nodes := make(map[string]root.NodeList)
-	nodes["a"] = root.NodeList{"b", "c", "d"}
-	nodes["b"] = root.NodeList{"e", "f"}
-	nodes["c"] = root.NodeList{"g"}
-	nodes["e"] = root.NodeList{"h", "i"}
+	nodes := make(map[string]dfs_traversal.NodeList)
+	nodes["a"] = dfs_traversal.NodeList{"b", "c", "d"}
+	nodes["b"] = dfs_traversal.NodeList{"e", "f"}
+	nodes["c"] = dfs_traversal.NodeList{"g"}
+	nodes["e"] = dfs_traversal.NodeList{"h", "i"}
 
 	b.Run("Recursion", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {

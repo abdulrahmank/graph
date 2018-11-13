@@ -1,4 +1,4 @@
-package root
+package dfs_traversal
 
 type NodeList []string
 
